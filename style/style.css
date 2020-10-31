@@ -1,0 +1,30 @@
+body{
+    color:rgb(77, 21, 190)
+}
+h1{
+    color: #c9a819;
+    text-align: center;
+}
+.shelf{
+    display: flex;
+    flex:1;
+}
+p{
+    margin: 10px;
+}
+#formAddingBook{
+    display: none;
+} 
+#adding{
+    display:none
+}
+#display{
+    display:flex;
+}
+.books{
+    border: 1px solid red;
+    flex: 1
+}
+.remB{
+    scroll-margin-right: 10px;
+}
