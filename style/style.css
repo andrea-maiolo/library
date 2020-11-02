@@ -1,30 +1,38 @@
-body{
-    color:rgb(77, 21, 190)
+body {
+    color: rgb(77, 21, 190)
 }
-h1{
+
+h1 {
     color: #c9a819;
     text-align: center;
 }
-.shelf{
+
+.shelf {
     display: flex;
-    flex:1;
+    flex: 1;
 }
-p{
+
+p {
     margin: 10px;
 }
-#formAddingBook{
+
+#formAddingBook {
     display: none;
-} 
-#adding{
-    display:none
 }
-#display{
-    display:flex;
+
+#adding {
+    display: none
 }
-.books{
+
+#display {
+    display: flex;
+}
+
+.books {
     border: 1px solid red;
     flex: 1
 }
-.remB{
+
+.remB {
     scroll-margin-right: 10px;
 }
