@@ -7,11 +7,6 @@ h1 {
     text-align: center;
 }
 
-.shelf {
-    display: flex;
-    flex: 1;
-}
-
 p {
     margin: 10px;
 }
@@ -36,3 +31,7 @@ p {
 .remB {
     scroll-margin-right: 10px;
 }
+.buttons {
+    height: 20px;
+    width: 20px;
+}    

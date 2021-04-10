@@ -1,4 +1,3 @@
-//variabels form form
 const title = document.querySelector('#title');
 const author = document.querySelector('#author');
 const pages = document.querySelector('#pages');
@@ -9,41 +8,60 @@ const statusRead = document.querySelector('#statusRead');
 const statusToRead = document.querySelector('#statusToRead');
 //this show the form when clicked
 const formAddingBook = document.querySelector('#formAddingBook');
+const adding = document.querySelector('#adding');
 //this is to show the form for adding a book
 const addNewBook = document.querySelector('#addNewBook');
 addNewBook.addEventListener('click', () => {
     formAddingBook.style.display = "block";
-    adding.style.display = "block"
+    adding.style.display = "block";
+    addNewBook.style.display = "none"
 })
+
 //this button will actually add the books on the shelf
-const adding = document.querySelector('#adding');
 adding.addEventListener('click', addingToLibrary);
-//this function append the books as p elements on the screen
+
+// //this is the construct for the books, all our books need to be created from here
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        const info = function() {
+            let r;
+            if (read === true) {
+                r = "read already"
+            } else {
+                r = "not read yet"
+            }
+            return `${title} by ${author}, ${pages} pages, ${r}`
+        }
+    }
+}
 
 //this is going to be our library
 let library = [];
 
 //this will check at the beginning of the file for a localLibrary
-function isThereALibrary() {
+const isThereALibrary = (function() {
     let provisionalLib = JSON.parse(localStorage.getItem("localLibrary"));
     if (provisionalLib.length > 0) {
         library = provisionalLib
     } else {
-        return
+        throw new Error("provisionalLib is null")
+        // return
     }
-}
-isThereALibrary();
+})();
+
 
 //this will display the local Library
-function displayLocalLibrary() {
+const displayLocalLibrary = (function() {
     if (library.length > 0) {
         for (let i = 0; i < library.length; i++) {
             showMe(library[i])
-
         }
     }
-}
-displayLocalLibrary()
+})()
 
 function addingToLibrary() {
     if ((title.value != '' && author.value != '' && pages.value != '') && (statusRead.checked || statusToRead.checked)) {
@@ -56,7 +74,6 @@ function addingToLibrary() {
         library.push(newB)
         showMe(newB)
         movingIntoStorage()
-
     }
 }
 
@@ -75,19 +92,23 @@ function showMe(element) {
     myBookInfo.addEventListener('click', () => {
         alert(element.info())
     })
-    myBookInfo.innerHTML = "Info";
+    let iconI = document.createElement("i");
+    iconI.classList.add('glyphicon');
+    iconI.classList.add('glyphicon-info-sign');
+    myBookInfo.appendChild(iconI);
     let myBookStatus = document.createElement('button');
-    // let icon = document.createElement("img");//work on this one to show the img
-    // icon.src = "style/002-bookmark-1.svg";
-    myBookStatus.innerHTML = element.read
-    if (myBookStatus.innerHTML == "true") {
+    let iconBS = document.createElement("i");
+    iconBS.classList.add('glyphicon');
+    iconBS.classList.add('glyphicon-book');
+    myBookStatus.appendChild(iconBS);
+    if (element.stat === true) {
         myBookStatus.style.background = "green";
     } else {
         myBookStatus.style.background = "red";
     }
-    myBookStatus.addEventListener("click", () => {
-        toggleRead(element, myBookStatus)
-    });
+    // myBookStatus.addEventListener("click", () => {
+    //     toggleRead(element, myBookStatus)
+    // });
     //create a button that can remove the books from library
     let removeButton = document.createElement('button');
     removeButton.innerHTML = "x";
@@ -111,61 +132,24 @@ function cleanLibrary(ele) {
     library.splice(index, 1)
 }
 
-//this show the formwill set the button status color
-function toggleRead(ele, button) {
-    //this change the status on the library array
-    if (ele.read == true) {
-        ele.read = false
-    } else {
-        ele.read = true
-    }
-    //this change the colour
-    if (ele.read == true) {
-        button.style.background = "green";
-    } else {
-        button.style.background = "red";
-    }
-}
+// //this show the form will set the button status color
+// function toggleRead(ele, button) {
+//     //this change the status on the library array
+//     if (ele.read == true) {
+//         ele.read = false
+//     } else {
+//         ele.read = true
+//     }
+//     //this change the colour
+//     if (ele.read == true) {
+//         button.style.background = "green";
+//     } else {
+//         button.style.background = "red";
+//     }
+// }
 
 //this is the function that moves library into localStorage
 function movingIntoStorage() {
     l = JSON.stringify(library);
     window.localStorage.setItem("localLibrary", l)
 };
-
-
-// //this is the construct for the books, all our books need to becreated from here
-// function Book(title, author, pages, read){
-//     this.title = title;
-//     this.author = author;
-//     this.pages = pages;
-//     this.read = read;
-//     this.info = function(){
-//         let r;
-//         if(read === true){
-//             r = "read already"
-//         }else{
-//             r = "not read yet"
-//         }
-//         return   `${title} by ${author}, ${pages} pages, ${r}`
-//     }
-// }
-
-//this is just the refractoration of book
-class Book {
-    constructor(title, author, pages, read) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.read = read;
-        this.info = function() {
-            let r;
-            if (read === true) {
-                r = "read already"
-            } else {
-                r = "not read yet"
-            }
-            return `${title} by ${author}, ${pages} pages, ${r}`
-        }
-    }
-}
