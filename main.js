@@ -27,9 +27,15 @@ class Book {
         this.author = author;
         this.pages = pages;
         this.read = read;
-        let info = function() {
-            console.log("hello")
-            // let r= "hello";
+    }
+
+    getInfo(){
+        return this.info()
+    }
+    
+    info() {
+            return console.log("hello")
+            // let r;
             // // if (read === true) {
             // //     r = "read already"
             // // } else {
@@ -37,7 +43,6 @@ class Book {
             // // }
             // return `${title} by ${author}, ${pages} pages, ${r}`
         }
-    }
 }
 
 //this is going to be our library
@@ -95,7 +100,7 @@ function showMe(element) {
     iconI.classList.add('glyphicon-info-sign');
     myBookInfo.appendChild(iconI);
     myBookInfo.addEventListener('click', () => {
-        alert(element.info())
+        element.getInfo
     });
     let myBookStatus = document.createElement('button');
     let iconBS = document.createElement("i");
