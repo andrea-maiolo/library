@@ -27,14 +27,15 @@ class Book {
         this.author = author;
         this.pages = pages;
         this.read = read;
-        const info = function() {
-            let r;
-            if (read === true) {
-                r = "read already"
-            } else {
-                r = "not read yet"
-            }
-            return `${title} by ${author}, ${pages} pages, ${r}`
+        let info = function() {
+            console.log("hello")
+            // let r= "hello";
+            // // if (read === true) {
+            // //     r = "read already"
+            // // } else {
+            // //     r = "not read yet"
+            // // }
+            // return `${title} by ${author}, ${pages} pages, ${r}`
         }
     }
 }
@@ -89,23 +90,23 @@ function showMe(element) {
     let myBookPages = document.createElement('p');
     myBookPages.innerHTML = element.pages;
     let myBookInfo = document.createElement('button');
-    myBookInfo.addEventListener('click', () => {
-        alert(element.info())
-    })
     let iconI = document.createElement("i");
     iconI.classList.add('glyphicon');
     iconI.classList.add('glyphicon-info-sign');
     myBookInfo.appendChild(iconI);
+    myBookInfo.addEventListener('click', () => {
+        alert(element.info())
+    });
     let myBookStatus = document.createElement('button');
     let iconBS = document.createElement("i");
     iconBS.classList.add('glyphicon');
     iconBS.classList.add('glyphicon-book');
     myBookStatus.appendChild(iconBS);
-    if (element.stat === true) {
-        myBookStatus.style.background = "green";
-    } else {
-        myBookStatus.style.background = "red";
-    }
+    // if (element.stat === true) {
+    //     myBookStatus.style.background = "green";
+    // } else {
+    //     myBookStatus.style.background = "red";
+    // }
     // myBookStatus.addEventListener("click", () => {
     //     toggleRead(element, myBookStatus)
     // });
