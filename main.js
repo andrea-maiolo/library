@@ -45,6 +45,7 @@ class Book {
         }
 }
 
+
 //this is going to be our library
 let library = [];
 
@@ -72,11 +73,11 @@ const displayLocalLibrary = (function() {
 function addingToLibrary() {
     if ((title.value != '' && author.value != '' && pages.value != '') && (statusRead.checked || statusToRead.checked)) {
         if (statusRead.checked) {
-            var stat = true;
+            var read = true;
         } else if (statusToRead.checked) {
-            stat = false;
+            read = false;
         }
-        let newB = new Book(title.value, author.value, pages.value, stat);
+        let newB = new Book(title.value, author.value, pages.value, read);
         library.push(newB)
         showMe(newB)
         movingIntoStorage()
@@ -94,28 +95,33 @@ function showMe(element) {
     myBookAuthor.innerHTML = element.author;
     let myBookPages = document.createElement('p');
     myBookPages.innerHTML = element.pages;
+
     let myBookInfo = document.createElement('button');
     let iconI = document.createElement("i");
     iconI.classList.add('glyphicon');
     iconI.classList.add('glyphicon-info-sign');
     myBookInfo.appendChild(iconI);
-    myBookInfo.addEventListener('click', () => {
-        element.getInfo
-    });
+    //need to understand how to make info work
+    // myBookInfo.addEventListener('click', () => {
+    //     console.log(element)
+    // });
+
+    let readOrNot = element.read;
     let myBookStatus = document.createElement('button');
     let iconBS = document.createElement("i");
     iconBS.classList.add('glyphicon');
     iconBS.classList.add('glyphicon-book');
     myBookStatus.appendChild(iconBS);
-    // if (element.stat === true) {
-    //     myBookStatus.style.background = "green";
-    // } else {
-    //     myBookStatus.style.background = "red";
-    // }
-    // myBookStatus.addEventListener("click", () => {
-    //     toggleRead(element, myBookStatus)
-    // });
-    //create a button that can remove the books from library
+    if (element.read === true) {
+        myBookStatus.style.backgroundColor = "green";
+    } else {
+        myBookStatus.style.backgroundColor = "red";
+    }
+    myBookStatus.addEventListener("click", () =>{
+       tog(element)
+        // toggleRead(element, myBookStatus));
+    });
+
     let removeButton = document.createElement('button');
     removeButton.innerHTML = "x";
     removeButton.classList.add("remB")
@@ -138,7 +144,12 @@ function cleanLibrary(ele) {
     library.splice(index, 1)
 }
 
-// //this show the form will set the button status color
+function tog(element){
+    let myBookStatus =  element.status;
+    console.log(myBookStatus)
+}
+
+//this show the form will set the button status color
 // function toggleRead(ele, button) {
 //     //this change the status on the library array
 //     if (ele.read == true) {
