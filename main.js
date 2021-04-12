@@ -108,18 +108,23 @@ function showMe(element) {
 
     let readOrNot = element.read;
     let myBookStatus = document.createElement('button');
+    myBookStatus.classList.add('bs');
     let iconBS = document.createElement("i");
     iconBS.classList.add('glyphicon');
     iconBS.classList.add('glyphicon-book');
     myBookStatus.appendChild(iconBS);
-    if (element.read === true) {
+    if (element.read == true) {
         myBookStatus.style.backgroundColor = "green";
     } else {
         myBookStatus.style.backgroundColor = "red";
     }
     myBookStatus.addEventListener("click", () =>{
-       tog(element)
-        // toggleRead(element, myBookStatus));
+       if(myBookStatus.style.backgroundColor == 'red'){
+        myBookStatus.style.backgroundColor = 'green';
+       }else if(myBookStatus.style.backgroundColor == 'green'){
+           myBookStatus.style.backgroundColor = 'red'
+       }
+       tog(element);
     });
 
     let removeButton = document.createElement('button');
@@ -145,8 +150,12 @@ function cleanLibrary(ele) {
 }
 
 function tog(element){
-    let myBookStatus =  element.status;
-    console.log(myBookStatus)
+    console.log(element.read)
+    if(element.read ==true){
+        element.read = false
+    }else if (element.read ==false){
+        element.read = true
+    }
 }
 
 //this show the form will set the button status color
