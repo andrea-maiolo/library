@@ -101,7 +101,7 @@ function showMe(element) {
     myBookInfo.appendChild(iconI);
     //need to understand how to make info work
     myBookInfo.addEventListener('click', () => {
-        console.log(element.getInfo())
+        console.log(`${element.title} by ${element.author}, ${element.pages} in total, status ${element.read}`)
     });
 
     let readOrNot = element.read;
