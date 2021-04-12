@@ -33,15 +33,14 @@ class Book {
         return this.info()
     }
     
-    info() {
-            return console.log("hello")
-            // let r;
-            // // if (read === true) {
-            // //     r = "read already"
-            // // } else {
-            // //     r = "not read yet"
-            // // }
-            // return `${title} by ${author}, ${pages} pages, ${r}`
+    info(read) {
+            let r;
+            if (read === true) {
+                r = "read already"
+            } else {
+                r = "not read yet"
+            }
+            return `${title} by ${author}, ${pages} pages, ${r}`
         }
 }
 
@@ -56,7 +55,6 @@ const isThereALibrary = (function() {
         library = provisionalLib
     } else {
         throw new Error("provisionalLib is null")
-        // return
     }
 })();
 
@@ -102,9 +100,9 @@ function showMe(element) {
     iconI.classList.add('glyphicon-info-sign');
     myBookInfo.appendChild(iconI);
     //need to understand how to make info work
-    // myBookInfo.addEventListener('click', () => {
-    //     console.log(element)
-    // });
+    myBookInfo.addEventListener('click', () => {
+        console.log(element.getInfo())
+    });
 
     let readOrNot = element.read;
     let myBookStatus = document.createElement('button');
@@ -124,7 +122,7 @@ function showMe(element) {
        }else if(myBookStatus.style.backgroundColor == 'green'){
            myBookStatus.style.backgroundColor = 'red'
        }
-       tog(element);
+       toggleStatus(element);
     });
 
     let removeButton = document.createElement('button');
@@ -149,30 +147,13 @@ function cleanLibrary(ele) {
     library.splice(index, 1)
 }
 
-function tog(element){
-    console.log(element.read)
+function toggleStatus(element){
     if(element.read ==true){
         element.read = false
     }else if (element.read ==false){
         element.read = true
     }
 }
-
-//this show the form will set the button status color
-// function toggleRead(ele, button) {
-//     //this change the status on the library array
-//     if (ele.read == true) {
-//         ele.read = false
-//     } else {
-//         ele.read = true
-//     }
-//     //this change the colour
-//     if (ele.read == true) {
-//         button.style.background = "green";
-//     } else {
-//         button.style.background = "red";
-//     }
-// }
 
 //this is the function that moves library into localStorage
 function movingIntoStorage() {
