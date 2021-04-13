@@ -28,20 +28,6 @@ class Book {
         this.pages = pages;
         this.read = read;
     }
-
-    getInfo(){
-        return this.info()
-    }
-    
-    info(read) {
-            let r;
-            if (read === true) {
-                r = "read already"
-            } else {
-                r = "not read yet"
-            }
-            return `${title} by ${author}, ${pages} pages, ${r}`
-        }
 }
 
 
@@ -53,8 +39,6 @@ const isThereALibrary = (function() {
     let provisionalLib = JSON.parse(localStorage.getItem("localLibrary"));
     if (provisionalLib.length > 0) {
         library = provisionalLib
-    } else {
-        throw new Error("provisionalLib is null")
     }
 })();
 
@@ -99,9 +83,10 @@ function showMe(element) {
     iconI.classList.add('glyphicon');
     iconI.classList.add('glyphicon-info-sign');
     myBookInfo.appendChild(iconI);
-    //need to understand how to make info work
     myBookInfo.addEventListener('click', () => {
-        console.log(`${element.title} by ${element.author}, ${element.pages} in total, status ${element.read}`)
+        let a;
+        element.read == true ? a = "already read" : a = "not read yet";
+        alert(`${element.title} by ${element.author}, ${element.pages} in total, status ${a}`)
     });
 
     let readOrNot = element.read;
@@ -116,13 +101,13 @@ function showMe(element) {
     } else {
         myBookStatus.style.backgroundColor = "red";
     }
-    myBookStatus.addEventListener("click", () =>{
-       if(myBookStatus.style.backgroundColor == 'red'){
-        myBookStatus.style.backgroundColor = 'green';
-       }else if(myBookStatus.style.backgroundColor == 'green'){
-           myBookStatus.style.backgroundColor = 'red'
-       }
-       toggleStatus(element);
+    myBookStatus.addEventListener("click", () => {
+        if (myBookStatus.style.backgroundColor == 'red') {
+            myBookStatus.style.backgroundColor = 'green';
+        } else if (myBookStatus.style.backgroundColor == 'green') {
+            myBookStatus.style.backgroundColor = 'red'
+        }
+        toggleStatus(element);
     });
 
     let removeButton = document.createElement('button');
@@ -147,10 +132,10 @@ function cleanLibrary(ele) {
     library.splice(index, 1)
 }
 
-function toggleStatus(element){
-    if(element.read ==true){
+function toggleStatus(element) {
+    if (element.read == true) {
         element.read = false
-    }else if (element.read ==false){
+    } else if (element.read == false) {
         element.read = true
     }
 }
