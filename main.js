@@ -1,3 +1,5 @@
+"use strict"
+
 const title = document.querySelector('#title');
 const author = document.querySelector('#author');
 const pages = document.querySelector('#pages');
@@ -128,7 +130,7 @@ function showMe(element) {
 
 //this is to remove the  book from the library array
 function cleanLibrary(ele) {
-    index = library.indexOf(ele)
+    let index = library.indexOf(ele)
     library.splice(index, 1)
 }
 
@@ -142,6 +144,6 @@ function toggleStatus(element) {
 
 //this is the function that moves library into localStorage
 function movingIntoStorage() {
-    l = JSON.stringify(library);
+    let l = JSON.stringify(library);
     window.localStorage.setItem("localLibrary", l)
 };
