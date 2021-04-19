@@ -1,5 +1,9 @@
 body {
-    color: rgb(77, 21, 190)
+    display:flex;
+}
+
+#sidebar{
+    flex:1;
 }
 
 h1 {
@@ -11,21 +15,45 @@ p {
     margin: 10px;
 }
 
-#formAddingBook {
-    display: none;
+#formAddingBook{
+    margin:1em;
+    display:flex;
+    flex-direction: column;
 }
 
-#adding {
-    display: none
+#title{
+    margin:0.2em;
+    flex:1;
+}
+
+#author{
+    margin:0.2em;
+    flex:1;
+}
+
+#pages{
+    margin:0.2em;
+    flex:1;
+}
+
+#adding{
+    width:104px;
+    height:32px;
+    flex:1;
+    margin:0.2em;
+    background-color:#d2b228;
 }
 
 #display {
+    margin:2em;
+    flex:3;
     display: flex;
 }
 
 .books {
     border: 1px solid red;
-    flex: 1
+    flex: 1;
+    margin:0.3em;
 }
 
 .remB {
@@ -35,3 +63,65 @@ p {
     height: 20px;
     width: 20px;
 }    
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 26px;
+  }
+    
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #FF5613;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked+.slider {
+    background-color: #12F493;
+  }
+  
+  input:focus+.slider {
+    box-shadow: 0 0 1px #12F493;
+  }
+  
+  input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }

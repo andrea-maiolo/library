@@ -12,12 +12,12 @@ const statusToRead = document.querySelector('#statusToRead');
 const formAddingBook = document.querySelector('#formAddingBook');
 const adding = document.querySelector('#adding');
 //this is to show the form for adding a book
-const addNewBook = document.querySelector('#addNewBook');
-addNewBook.addEventListener('click', () => {
-    formAddingBook.style.display = "block";
-    adding.style.display = "block";
-    addNewBook.style.display = "none"
-})
+// const addNewBook = document.querySelector('#addNewBook');
+// addNewBook.addEventListener('click', () => {
+//     formAddingBook.style.display = "block";
+//     adding.style.display = "block";
+//     addNewBook.style.display = "none"
+// })
 
 //this button will actually add the books on the shelf
 adding.addEventListener('click', addingToLibrary);
@@ -113,7 +113,10 @@ function showMe(element) {
     });
 
     let removeButton = document.createElement('button');
-    removeButton.innerHTML = "x";
+    let trashI = document.createElement("i");
+    trashI.classList.add('glyphicon');
+    trashI.classList.add('glyphicon-trash');
+    removeButton.appendChild(trashI);
     removeButton.classList.add("remB")
     removeButton.addEventListener('click', () => {
         display.removeChild(myBook);
