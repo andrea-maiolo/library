@@ -76,15 +76,19 @@ function showMe(element) {
     let myBookTitle = document.createElement('p');
     myBookTitle.innerHTML = element.title;
     let myBookAuthor = document.createElement('p');
-    myBookAuthor.innerHTML = element.author;
+    myBookAuthor.innerHTML = `By: ${element.author}`;
     let myBookPages = document.createElement('p');
-    myBookPages.innerHTML = element.pages;
+    myBookPages.innerHTML = `Pages: ${element.pages}`;
+
+    let buttonDiv = document.createElement('div');
+    buttonDiv.classList.add('buttonDiv');
 
     let myBookInfo = document.createElement('button');
     let iconI = document.createElement("i");
     iconI.classList.add('glyphicon');
     iconI.classList.add('glyphicon-info-sign');
     myBookInfo.appendChild(iconI);
+    myBookInfo.classList.add('infoButton')
     myBookInfo.addEventListener('click', () => {
         let a;
         element.read == true ? a = "already read" : a = "not read yet";
@@ -93,7 +97,7 @@ function showMe(element) {
 
     let readOrNot = element.read;
     let myBookStatus = document.createElement('button');
-    myBookStatus.classList.add('bs');
+    myBookStatus.classList.add('statusButton');
     let iconBS = document.createElement("i");
     iconBS.classList.add('glyphicon');
     iconBS.classList.add('glyphicon-book');
@@ -112,6 +116,9 @@ function showMe(element) {
         toggleStatus(element);
     });
 
+    buttonDiv.appendChild(myBookStatus);
+    buttonDiv.appendChild(myBookInfo);
+
     let removeButton = document.createElement('button');
     let trashI = document.createElement("i");
     trashI.classList.add('glyphicon');
@@ -126,8 +133,7 @@ function showMe(element) {
     myBook.appendChild(myBookTitle);
     myBook.appendChild(myBookAuthor);
     myBook.appendChild(myBookPages);
-    myBook.appendChild(myBookStatus)
-    myBook.appendChild(myBookInfo);
+    myBook.appendChild(buttonDiv)
     display.appendChild(myBook);
 }
 
