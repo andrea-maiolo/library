@@ -12,20 +12,23 @@
         <h1>My Library!</h1>
         <!-- <button type="button" id="addNewBook">New Book</button> -->
         <form id="formAddingBook">
-            <input type="text" id="title" placeholder="title">
-            <input type="text" id="author" placeholder="author">
+            <label for="title" class="labelR tap">Title</label>
+            <input type="text" id="title" placeholder="The war of art">
+            <label for="author" class="labelR tap">Author</label>
+            <input type="text" id="author" placeholder="Steven Pressfield">
+            <label for="pages" class="labelR tap">Number of pages</label>
             <input type="number" id="pages">
-            <!-- <br>
+            <!--<br>-->
             <input type="radio" id="statusRead" name="status">
-            <label for="statusRead">Read</label><br>
+            <label for="statusRead" class="labelR">Read</label>
             <input type="radio" id="statusToRead" name="status">
-            <label for="statusToRead">To read</label> -->
-
+            <label for="statusToRead" class="labelR">Not read</label>
+<!-- 
       <label for="checkbox">Read</label>
       <label class="switch">
         <input type="checkbox" class="checkbox" id="checkbox">
         <span class="slider round"></span>
-      </label>
+      </label> -->
 
             <button type="button" id="adding">Add</button>
         </form>

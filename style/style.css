@@ -1,13 +1,17 @@
 body {
     display:flex;
+    background-color:#f7f1f0;
+    min-height: 100vh;;
 }
 
 #sidebar{
     flex:1;
+    background-color: #33648e;
 }
 
 h1 {
     color: #c9a819;
+    margin:1.2em;
     text-align: center;
 }
 
@@ -16,32 +20,42 @@ p {
 }
 
 #formAddingBook{
-    margin:1em;
+    margin:1.2em;
     display:flex;
     flex-direction: column;
+    min-height: 75vh;
+    justify-content:space-evenly;
 }
 
 #title{
-    margin:0.2em;
-    flex:1;
+    margin:1.2em;
+    /* flex:1; */
 }
 
 #author{
-    margin:0.2em;
-    flex:1;
+    margin:1.2em;
+    /* position:relative;
+    top:50px; */
+    /* flex:1; */
 }
 
 #pages{
-    margin:0.2em;
-    flex:1;
+    margin:1.2em;
+    /* position: relative;
+    top:100px; */
+    /* flex:1; */
+}
+
+.tap{
+  margin-left:1.2em;
 }
 
 #adding{
     width:104px;
     height:32px;
-    flex:1;
-    margin:0.2em;
-    background-color:#d2b228;
+    /* flex:1; */
+    margin:1.2em;
+    background-color:#c9a819;
 }
 
 #display {
@@ -85,8 +99,11 @@ p {
     width: 20px;
 }    
 
+.labelR {
+  color:#c9a819
+}
 
-.switch {
+/* .switch {
     position: relative;
     display: inline-block;
     width: 52px;
@@ -139,10 +156,10 @@ p {
   
   /* Rounded sliders */
   
-  .slider.round {
+  /* .slider.round {
     border-radius: 34px;
   }
   
   .slider.round:before {
     border-radius: 50%;
-  }
+  } */ 
