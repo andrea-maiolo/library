@@ -94,15 +94,20 @@ function showMe(element) {
     iconBS.classList.add('glyphicon-book');
     myBookStatus.appendChild(iconBS);
     if (element.read == true) {
-        myBookStatus.style.backgroundColor = "green";
+        myBook.style.backgroundColor = "#5eeb8a";
+        myBookStatus.setAttribute("currentS","g")
     } else {
-        myBookStatus.style.backgroundColor = "red";
+        myBook.style.backgroundColor = "#eb5d78";
+        myBookStatus.setAttribute("currentS","r")
     }
     myBookStatus.addEventListener("click", () => {
-        if (myBookStatus.style.backgroundColor == 'red') {
-            myBookStatus.style.backgroundColor = 'green';
-        } else if (myBookStatus.style.backgroundColor == 'green') {
-            myBookStatus.style.backgroundColor = 'red'
+        let c = myBookStatus.getAttribute("currentS");
+        if (c == 'g') {
+            myBook.style.backgroundColor = 'rgb(235,93,120)';
+            myBookStatus.setAttribute("currentS" , "r");
+        } else if (c =='r') {
+            myBook.style.backgroundColor = 'rgb(94,235,138)';
+            myBookStatus.setAttribute("currentS" , "g")
         }
         toggleStatus(element);
     });
