@@ -10,7 +10,6 @@
 <body>
     <div id='sidebar'>
         <h1>My Library!</h1>
-        <!-- <button type="button" id="addNewBook">New Book</button> -->
         <form id="formAddingBook">
             <label for="title" class="labelR tap">Title</label>
             <input type="text" id="title" placeholder="The war of art">
@@ -18,18 +17,10 @@
             <input type="text" id="author" placeholder="Steven Pressfield">
             <label for="pages" class="labelR tap">Number of pages</label>
             <input type="number" id="pages">
-            <!--<br>-->
-            <input type="radio" id="statusRead" name="status">
-            <label for="statusRead" class="labelR">Read</label>
-            <input type="radio" id="statusToRead" name="status">
-            <label for="statusToRead" class="labelR">Not read</label>
-<!-- 
-      <label for="checkbox">Read</label>
-      <label class="switch">
-        <input type="checkbox" class="checkbox" id="checkbox">
-        <span class="slider round"></span>
-      </label> -->
-
+            <input type="radio" id="statusRead" name="status" class="inputR">
+            <label for="statusRead" class="labelR labPosition">Read</label>
+            <input type="radio" id="statusToRead" name="status" class="inputR">
+            <label for="statusToRead" class="labelR labPosition">Not read</label>
             <button type="button" id="adding">Add</button>
         </form>
     </div>

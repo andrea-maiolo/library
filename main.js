@@ -11,14 +11,6 @@ const statusToRead = document.querySelector('#statusToRead');
 //this show the form when clicked
 const formAddingBook = document.querySelector('#formAddingBook');
 const adding = document.querySelector('#adding');
-//this is to show the form for adding a book
-// const addNewBook = document.querySelector('#addNewBook');
-// addNewBook.addEventListener('click', () => {
-//     formAddingBook.style.display = "block";
-//     adding.style.display = "block";
-//     addNewBook.style.display = "none"
-// })
-
 //this button will actually add the books on the shelf
 adding.addEventListener('click', addingToLibrary);
 
@@ -31,7 +23,6 @@ class Book {
         this.read = read;
     }
 }
-
 
 //this is going to be our library
 let library = [];
