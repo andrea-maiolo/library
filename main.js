@@ -1,3 +1,5 @@
+"use strict"
+
 const title = document.querySelector('#title');
 const author = document.querySelector('#author');
 const pages = document.querySelector('#pages');
@@ -9,14 +11,6 @@ const statusToRead = document.querySelector('#statusToRead');
 //this show the form when clicked
 const formAddingBook = document.querySelector('#formAddingBook');
 const adding = document.querySelector('#adding');
-//this is to show the form for adding a book
-const addNewBook = document.querySelector('#addNewBook');
-addNewBook.addEventListener('click', () => {
-    formAddingBook.style.display = "block";
-    adding.style.display = "block";
-    addNewBook.style.display = "none"
-})
-
 //this button will actually add the books on the shelf
 adding.addEventListener('click', addingToLibrary);
 
@@ -27,15 +21,6 @@ class Book {
         this.author = author;
         this.pages = pages;
         this.read = read;
-        const info = function() {
-            let r;
-            if (read === true) {
-                r = "read already"
-            } else {
-                r = "not read yet"
-            }
-            return `${title} by ${author}, ${pages} pages, ${r}`
-        }
     }
 }
 
@@ -47,9 +32,6 @@ const isThereALibrary = (function() {
     let provisionalLib = JSON.parse(localStorage.getItem("localLibrary"));
     if (provisionalLib.length > 0) {
         library = provisionalLib
-    } else {
-        throw new Error("provisionalLib is null")
-        // return
     }
 })();
 
@@ -66,11 +48,11 @@ const displayLocalLibrary = (function() {
 function addingToLibrary() {
     if ((title.value != '' && author.value != '' && pages.value != '') && (statusRead.checked || statusToRead.checked)) {
         if (statusRead.checked) {
-            var stat = true;
+            var read = true;
         } else if (statusToRead.checked) {
-            stat = false;
+            read = false;
         }
-        let newB = new Book(title.value, author.value, pages.value, stat);
+        let newB = new Book(title.value, author.value, pages.value, read);
         library.push(newB)
         showMe(newB)
         movingIntoStorage()
@@ -85,33 +67,59 @@ function showMe(element) {
     let myBookTitle = document.createElement('p');
     myBookTitle.innerHTML = element.title;
     let myBookAuthor = document.createElement('p');
-    myBookAuthor.innerHTML = element.author;
+    myBookAuthor.innerHTML = `By: ${element.author}`;
     let myBookPages = document.createElement('p');
-    myBookPages.innerHTML = element.pages;
+    myBookPages.innerHTML = `Pages: ${element.pages}`;
+
+    let buttonDiv = document.createElement('div');
+    buttonDiv.classList.add('buttonDiv');
+
     let myBookInfo = document.createElement('button');
-    myBookInfo.addEventListener('click', () => {
-        alert(element.info())
-    })
     let iconI = document.createElement("i");
     iconI.classList.add('glyphicon');
     iconI.classList.add('glyphicon-info-sign');
     myBookInfo.appendChild(iconI);
+    myBookInfo.classList.add('infoButton')
+    myBookInfo.addEventListener('click', () => {
+        let a;
+        element.read == true ? a = "already read" : a = "not read yet";
+        alert(`${element.title} by ${element.author}, ${element.pages} in total, status ${a}`)
+    });
+
+    let readOrNot = element.read;
     let myBookStatus = document.createElement('button');
+    myBookStatus.classList.add('statusButton');
     let iconBS = document.createElement("i");
     iconBS.classList.add('glyphicon');
     iconBS.classList.add('glyphicon-book');
     myBookStatus.appendChild(iconBS);
-    if (element.stat === true) {
-        myBookStatus.style.background = "green";
+    if (element.read == true) {
+        myBook.style.backgroundColor = "#5eeb8a";
+        myBookStatus.setAttribute("currentS","g")
     } else {
-        myBookStatus.style.background = "red";
+        myBook.style.backgroundColor = "#eb5d78";
+        myBookStatus.setAttribute("currentS","r")
     }
-    // myBookStatus.addEventListener("click", () => {
-    //     toggleRead(element, myBookStatus)
-    // });
-    //create a button that can remove the books from library
+    myBookStatus.addEventListener("click", () => {
+        let c = myBookStatus.getAttribute("currentS");
+        if (c == 'g') {
+            myBook.style.backgroundColor = 'rgb(235,93,120)';
+            myBookStatus.setAttribute("currentS" , "r");
+        } else if (c =='r') {
+            myBook.style.backgroundColor = 'rgb(94,235,138)';
+            myBookStatus.setAttribute("currentS" , "g")
+        }
+        toggleStatus(element);
+    });
+
+    buttonDiv.appendChild(myBookStatus);
+    buttonDiv.appendChild(myBookInfo);
+
     let removeButton = document.createElement('button');
-    removeButton.innerHTML = "x";
+    let trashI = document.createElement("i");
+    trashI.classList.add('glyphicon');
+    trashI.classList.add('glyphicon-trash');
+    removeButton.appendChild(trashI);
     removeButton.classList.add("remB")
     removeButton.addEventListener('click', () => {
         display.removeChild(myBook);
@@ -121,35 +129,26 @@ function showMe(element) {
     myBook.appendChild(myBookTitle);
     myBook.appendChild(myBookAuthor);
     myBook.appendChild(myBookPages);
-    myBook.appendChild(myBookStatus)
-    myBook.appendChild(myBookInfo);
+    myBook.appendChild(buttonDiv)
     display.appendChild(myBook);
 }
 
 //this is to remove the  book from the library array
 function cleanLibrary(ele) {
-    index = library.indexOf(ele)
+    let index = library.indexOf(ele)
     library.splice(index, 1)
 }
 
-// //this show the form will set the button status color
-// function toggleRead(ele, button) {
-//     //this change the status on the library array
-//     if (ele.read == true) {
-//         ele.read = false
-//     } else {
-//         ele.read = true
-//     }
-//     //this change the colour
-//     if (ele.read == true) {
-//         button.style.background = "green";
-//     } else {
-//         button.style.background = "red";
-//     }
-// }
+function toggleStatus(element) {
+    if (element.read == true) {
+        element.read = false
+    } else if (element.read == false) {
+        element.read = true
+    }
+}
 
 //this is the function that moves library into localStorage
 function movingIntoStorage() {
-    l = JSON.stringify(library);
+    let l = JSON.stringify(library);
     window.localStorage.setItem("localLibrary", l)
 };
