@@ -1,20 +1,20 @@
-@media screen and (max-width: 650px){
+@media screen and (max-width: 650px) {
   body {
-      display:flex;
-      flex-direction: column;
-      background-color:#f7f1f0;
-      min-height: 100vh;;
+      background-color: #f7f1f0;
+      min-height: 100vh;
+      ;
   }
 
-  #sidebar{
-      flex:1;
+  #sidebar {
       background-color: #33648e;
-      position:fixed;
+      position: fixed;
+      display: block;
+      margin-top: -22em;
   }
 
   h1 {
-     color: #c9a819;
-      margin:0.2em;
+      color: #c9a819;
+      margin: 0.2em;
   }
 
   p {
@@ -22,207 +22,211 @@
       font-weight: 700;
   }
 
-  #formAddingBook{
-      margin:0.2em;
-      display:flex;
+  #formAddingBook {
+      margin: 0.2em;
+      display: flex;
       flex-direction: column;
       min-width: 99vw;
   }
 
-    #title{
-      margin:.2em;
+  #title {
+      margin: .2em;
   }
 
-  #author{
-      margin:.2em;
+  #author {
+      margin: .2em;
   }
 
-  #pages{
-      margin:.2em;
+  #pages {
+      margin: .2em;
   }
 
-  #adding{
-      margin:.2em;
-      background-color:#c9a819;
+  #adding {
+      margin: .2em;
+      background-color: #c9a819;
   }
 
   .labelR {
-    color:#c9a819
+      color: #c9a819
   }
 
   .labPosition {
-    margin-left:3.2em;
-    margin-top: -1.2em;
-  } 
- 
-  .inputR {
-      margin-left:.2em !important;
-  } 
-
-  #display {
-    margin-top:22em;
-    flex:3;
+      margin-left: 3.2em;
+      margin-top: -1.2em;
   }
 
-  .sign{
-    display:none;
-    }
+  .inputR {
+      margin-left: .2em !important;
+  }
+
+  #display {
+      margin-top: 22em;
+      display: flex;
+      flex-direction: column;
+  }
+
+  .sign {
+      display: none;
+  }
+
   .small-text {
-    display: none;;
+      display: none;
   }
 
   .books {
-    display:flex;
-    flex-direction: column;
-    height: 270px;
-    width: auto;
-    justify-content: space-between;
-    margin: 1.5em;
-    padding-right: 5px;
-    padding-left: 5px;
-    border-radius: 5%;
-    text-align: center;
-    border: 3px solid #33648e;
+      display: flex;
+      flex-direction: column;
+      height: 180px;
+      width: auto;
+      justify-content: space-between;
+      margin: 0.3em;
+      padding-right: 5px;
+      padding-left: 5px;
+      border-radius: 5%;
+      text-align: center;
+      border: 3px solid #33648e;
+  }
+
+  .remB {
+      align-self: flex-end;
+      background-color: #eed773;
+  }
+
+  .statusButton {
+      width: 35px;
+      height: 30px;
+      background-color: #eed773;
+  }
+
+  .infoButton {
+      width: 35px;
+      height: 30px;
+      background-color: #eed773;
   }
 
 }
-/*
-.remB {
-  align-self: flex-end;
-  background-color: #eed773;
-}
 
-.statusButton {
-  width:35px;
-  height:30px;
-  background-color:#eed773;
-}
+/* this stuff is true when screen is  widther than 650px
 
-.infoButton{
-  width:35px;
-  height:30px;
-  background-color:#eed773;
-}
-*/
-
-/* this stuff is true when screen is  widther than 650px */
-/* body {
-    display:flex;
-    background-color:#f7f1f0;
-    min-height: 100vh;;
+@media screen and (min-width: 651px){
+body {
+  display:flex;
+  background-color:#f7f1f0;
+  min-height: 100vh;;
 }
 
 #sidebar{
-    flex:1;
-    background-color: #33648e;
+  flex:1;
+  background-color: #33648e;
 }
 
 h1 {
-    color: #c9a819;
-    margin:1.2em;
-    text-align: center;
+  color: #c9a819;
+  margin:1.2em;
+  text-align: center;
 }
 
 p {
-    margin: 10px;
-    font-weight: 700;
+  margin: 10px;
+  font-weight: 700;
 }
 
 #formAddingBook{
-    margin:1.2em;
-    display:flex;
-    flex-direction: column;
-    min-height: 75vh;
-    justify-content:space-evenly;
-    position:fixed;
+  margin:1.2em;
+  display:flex;
+  flex-direction: column;
+  min-height: 75vh;
+  justify-content:space-evenly;
+  position:fixed;
 }
 
 #title{
-    margin:1.2em;
+  margin:1.2em;
 }
 
 #author{
-    margin:1.2em;
+  margin:1.2em;
 }
 
 #pages{
-    margin:1.2em;
+  margin:1.2em;
 }
 
 .tap{
-  margin-left:1.2em;
+margin-left:1.2em;
 }
 
 #adding{
-    width:104px;
-    height:32px;
-    margin:1.2em;
-    background-color:#c9a819;
+  width:104px;
+  height:32px;
+  margin:1.2em;
+  background-color:#c9a819;
 }
 
 .labelR {
-  color:#c9a819
+color:#c9a819
 }
 
 .labPosition {
-  margin-left:3.2em;
-  margin-top: -1.8em;
+margin-left:3.2em;
+margin-top: -1.8em;
 }
 
 .inputR {
-    margin-left:1.2em !important;
+  margin-left:1.2em !important;
 }
 
 #display {
-  margin:2em;
-  flex:3;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+margin:2em;
+flex:3;
+display: grid;
+grid-template-columns: repeat(3, 1fr); 
 }
 
 .books {
-  display:flex;
-  flex-direction: column;
-  height: 270px;
-  width: auto;
-  justify-content: space-between;
-  margin: 1.5em;
-  padding-right: 5px;
-  padding-left: 5px;
-  border-radius: 5%;
-  text-align: center;
-  border: 3px solid #33648e;
+display:flex;
+flex-direction: column;
+height: 270px;
+width: auto;
+justify-content: space-between;
+margin: 1.5em;
+padding-right: 5px;
+padding-left: 5px;
+border-radius: 5%;
+text-align: center;
+border: 3px solid #33648e;
 }
 
 .remB {
-  align-self: flex-end;
-  background-color: #eed773;
+align-self: flex-end;
+background-color: #eed773;
 }
 
 .statusButton {
-  width:35px;
-  height:30px;
-  background-color:#eed773;
+width:35px;
+height:30px;
+background-color:#eed773;
 }
 
 .infoButton{
-  width:35px;
-  height:30px;
-  background-color:#eed773;
+width:35px;
+height:30px;
+background-color:#eed773;
 }
 
 .sign{
-	color: #c9a819;
-	width: 100%;
-	font-size: .7em;
-  }
+color: #c9a819;
+width: 100%;
+font-size: .7em;
+}
 .small-text {
-  display: block;
-  text-align: center;
-  color: #c9a819;
+display: block;
+text-align: center;
+color: #c9a819;
 }
 
 a{
-  color:black;
+color:black;
 } 
- */
+}
+*/
