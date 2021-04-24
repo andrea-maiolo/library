@@ -115,9 +115,9 @@ const addingToLibrary = function() {
             read = false;
         }
         //purify input
-        let t = `${title.value}`;
-        console.log(typeof(t)); console.log(typeof(title.value))
-        let newB = new Book(t, author.value, pages.value, read);
+        title.value = encodeURIComponent(title.value);
+        author.value = encodeURIComponent(author.value);
+        let newB = new Book(title.value, author.value, pages.value, read);
         library.push(newB)
         showMe(newB)
         movingIntoStorage()
