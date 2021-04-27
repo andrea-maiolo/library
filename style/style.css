@@ -1,4 +1,4 @@
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 1024px) {
   #container {
       background-color: #f7f1f0;
       min-height: 100vh;
@@ -9,10 +9,10 @@
       background-color: #33648e;
       position: fixed;
       z-index: 1;
-      width:100vw;
-      top:0;
-      left:0;
-    }
+      width: 100vw;
+      top: 0;
+      left: 0;
+  }
 
   h1 {
       color: #c9a819;
@@ -78,7 +78,6 @@
   .books {
       display: flex;
       flex-direction: column;
-      height: 180px;
       width: auto;
       justify-content: space-between;
       margin: 0.3em;
@@ -108,127 +107,133 @@
 
 }
 
-/* this stuff is true when screen is  widther than 650px
+/*this is for desktop browsers*/
 
-@media screen and (min-width: 651px){
-body {
-  display:flex;
-  background-color:#f7f1f0;
-  min-height: 100vh;;
-}
+@media screen and (min-width: 1024px) {
 
-#sidebar{
-  flex:1;
-  background-color: #33648e;
-}
+  #container {
+      display: flex;
+      background-color: #f7f1f0;
+      min-height: 100vh;
+  }
 
-h1 {
-  color: #c9a819;
-  margin:1.2em;
-  text-align: center;
-}
+  #sidebar {
+      flex: 1;
+      background-color: #33648e;
+  }
 
-p {
-  margin: 10px;
-  font-weight: 700;
-}
+  h1 {
+      color: #c9a819;
+      margin: 1.2em;
+      text-align: center;
+  }
 
-#formAddingBook{
-  margin:1.2em;
-  display:flex;
-  flex-direction: column;
-  min-height: 75vh;
-  justify-content:space-evenly;
-  position:fixed;
-}
+  p {
+      margin: 10px;
+      font-weight: 700;
+  }
 
-#title{
-  margin:1.2em;
-}
+  #formAddingBook {
+      margin: 1.2em;
+      display: flex;
+      flex-direction: column;
+      min-height: 75vh;
+      justify-content: space-evenly;
+      position: fixed;
+  }
 
-#author{
-  margin:1.2em;
-}
+  #title {
+      margin: 1.2em;
+  }
 
-#pages{
-  margin:1.2em;
-}
+  #author {
+      margin: 1.2em;
+  }
 
-.tap{
-margin-left:1.2em;
-}
+  #pages {
+      margin: 1.2em;
+  }
 
-#adding{
-  width:104px;
-  height:32px;
-  margin:1.2em;
-  background-color:#c9a819;
-}
+  .tap {
+      margin-left: 1.2em;
+  }
 
-.labelR {
-color:#c9a819
-}
+  #adding {
+      width: 104px;
+      height: 32px;
+      margin: 1.2em;
+      background-color: #c9a819;
+  }
 
-.labPosition {
-margin-left:3.2em;
-margin-top: -1.8em;
-}
+  .labelR {
+      color: #c9a819
+  }
 
-.inputR {
-  margin-left:1.2em !important;
-}
+  .labPosition {
+      margin-left: 3.2em;
+      margin-top: -1.8em;
+  }
 
-#display {
-margin:2em;
-flex:3;
-display: grid;
-grid-template-columns: repeat(3, 1fr); 
-}
+  .inputR {
+      margin-left: 1.2em !important;
+  }
 
-.books {
-display:flex;
-flex-direction: column;
-height: 270px;
-width: auto;
-justify-content: space-between;
-margin: 1.5em;
-padding-right: 5px;
-padding-left: 5px;
-border-radius: 5%;
-text-align: center;
-border: 3px solid #33648e;
-}
+  #display {
+      margin: 2em;
+      flex: 3;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+  }
 
-.remB {
-align-self: flex-end;
-background-color: #eed773;
-}
+  .books {
+      display: flex;
+      flex-direction: column;
+      height: 270px;
+      width: 250px;;
+      justify-content: space-between;
+      margin: 1.5em;
+      padding-right: 5px;
+      padding-left: 5px;
+      border-radius: 5%;
+      text-align: center;
+      border: 3px solid #33648e;
+    }
+  }
 
-.statusButton {
-width:35px;
-height:30px;
-background-color:#eed773;
-}
+  .pOfBook{
+    word-wrap: break-word;
+  }
 
-.infoButton{
-width:35px;
-height:30px;
-background-color:#eed773;
-}
+  .remB {
+      align-self: flex-end;
+      background-color: #eed773;
+  }
 
-.sign{
-color: #c9a819;
-width: 100%;
-font-size: .7em;
-}
-.small-text {
-display: block;
-text-align: center;
-color: #c9a819;
-}
+  .statusButton {
+      width: 35px;
+      height: 30px;
+      background-color: #eed773;
+  }
 
-a{
-color:black;
-} 
+  .infoButton {
+      width: 35px;
+      height: 30px;
+      background-color: #eed773;
+  }
+
+  .sign {
+      color: #c9a819;
+      width: 100%;
+      font-size: .7em;
+  }
+
+  .small-text {
+      display: block;
+      text-align: center;
+      color: #c9a819;
+  }
+
+  a {
+      color: black;
+  }
 }
-*/

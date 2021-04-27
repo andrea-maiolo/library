@@ -43,6 +43,10 @@ const showMe = function(element) {
     myBookAuthor.innerHTML = `By: ${element.author}`;
     let myBookPages = document.createElement('p');
     myBookPages.innerHTML = `Pages: ${element.pages}`;
+    myBookTitle.classList.add('pOfBook');
+    myBookAuthor.classList.add('pOfBook');
+    myBookPages.classList.add('pOfBook');
+
 
     let buttonDiv = document.createElement('div');
     buttonDiv.classList.add('buttonDiv');
