@@ -12,31 +12,33 @@
 </head>
 
 <body>
-    <div id='sidebar'>
-        <h1>My Library!</h1>
-        <form id="formAddingBook">
-            <label for="title" class="labelR tap" >Title</label>
-            <input type="text" id="title" maxlength="40" placeholder="The war of art">
-            <label for="author" class="labelR tap">Author</label>
-            <input type="text" id="author" maxlength="25"   placeholder="Steven Pressfield">
-            <label for="pages" class="labelR tap">Number of pages</label>
-            <input type="number" id="pages">
-            <input type="radio" id="statusRead" name="status" class="inputR">
-            <label for="statusRead" class="labelR labPosition">Read</label>
-            <input type="radio" id="statusToRead" name="status" class="inputR">
-            <label for="statusToRead" class="labelR labPosition">Not read</label>
-            <button type="button" id="adding">Add</button>
-            <div class="sign">
-                <p>
-                    Developed by Andrea Maiolo with <img src="style/coding.svg" width="30px" height="auto"> and <img src="style/like.svg" width="30px" height="auto">
-                </p>
-                <span class="small-text">
-                    Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-                </span>
-            </div>
-        </form>
+    <div id="container">
+        <div id='sidebar'>
+            <h1>My Library!</h1>
+            <form id="formAddingBook">
+                <label for="title" class="labelR tap">Title</label>
+                <input type="text" id="title" maxlength="40" placeholder="The war of art">
+                <label for="author" class="labelR tap">Author</label>
+                <input type="text" id="author" maxlength="25" placeholder="Steven Pressfield">
+                <label for="pages" class="labelR tap">Number of pages</label>
+                <input type="number" id="pages">
+                <input type="radio" id="statusRead" name="status" class="inputR">
+                <label for="statusRead" class="labelR labPosition">Read</label>
+                <input type="radio" id="statusToRead" name="status" class="inputR">
+                <label for="statusToRead" class="labelR labPosition">Not read</label>
+                <button type="button" id="adding">Add</button>
+                <div class="sign">
+                    <p>
+                        Developed by Andrea Maiolo with <img src="style/coding.svg" width="30px" height="auto"> and <img src="style/like.svg" width="30px" height="auto">
+                    </p>
+                    <span class="small-text">
+                        Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <div id="display"></div>
     </div>
-    <div id="display"></div>
 </body>
 <script src="main.js"></script>
 

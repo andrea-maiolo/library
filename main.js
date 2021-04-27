@@ -115,9 +115,17 @@ const addingToLibrary = function() {
             read = false;
         }
         //purify input
-        title.value = encodeURIComponent(title.value);
-        author.value = encodeURIComponent(author.value);
-        let newB = new Book(title.value, author.value, pages.value, read);
+        let t;
+        t = encodeURIComponent(title.value);
+        if(t.length >40){
+            t = t.slice(0,40);
+        }
+        let a;
+        a = encodeURIComponent(author.value);
+        if(a.length >20){
+            a = a.slice(0,20);
+        }
+        let newB = new Book(t, a, pages.value, read);
         library.push(newB)
         showMe(newB)
         movingIntoStorage()
