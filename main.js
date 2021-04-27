@@ -11,8 +11,6 @@ const statusToRead = document.querySelector('#statusToRead');
 //this show the form when clicked
 const formAddingBook = document.querySelector('#formAddingBook');
 const adding = document.querySelector('#adding');
-//this button will actually add the books on the shelf
-adding.addEventListener('click', addingToLibrary);
 
 // //this is the construct for the books, all our books need to be created from here
 class Book {
@@ -35,33 +33,8 @@ const isThereALibrary = (function() {
     }
 })();
 
-
-//this will display the local Library
-const displayLocalLibrary = (function() {
-    if (library.length > 0) {
-        for (let i = 0; i < library.length; i++) {
-            showMe(library[i])
-        }
-    }
-})()
-
-function addingToLibrary() {
-    if ((title.value != '' && author.value != '' && pages.value != '') && (statusRead.checked || statusToRead.checked)) {
-        if (statusRead.checked) {
-            var read = true;
-        } else if (statusToRead.checked) {
-            read = false;
-        }
-        let newB = new Book(title.value, author.value, pages.value, read);
-        library.push(newB)
-        showMe(newB)
-        movingIntoStorage()
-    }
-}
-
-
 //show me the library
-function showMe(element) {
+const showMe = function(element) {
     let myBook = document.createElement('div');
     myBook.classList.add("books");
     let myBookTitle = document.createElement('p');
@@ -70,6 +43,10 @@ function showMe(element) {
     myBookAuthor.innerHTML = `By: ${element.author}`;
     let myBookPages = document.createElement('p');
     myBookPages.innerHTML = `Pages: ${element.pages}`;
+    myBookTitle.classList.add('pOfBook');
+    myBookAuthor.classList.add('pOfBook');
+    myBookPages.classList.add('pOfBook');
+
 
     let buttonDiv = document.createElement('div');
     buttonDiv.classList.add('buttonDiv');
@@ -95,19 +72,19 @@ function showMe(element) {
     myBookStatus.appendChild(iconBS);
     if (element.read == true) {
         myBook.style.backgroundColor = "#5eeb8a";
-        myBookStatus.setAttribute("currentS","g")
+        myBookStatus.setAttribute("currentS", "g")
     } else {
         myBook.style.backgroundColor = "#eb5d78";
-        myBookStatus.setAttribute("currentS","r")
+        myBookStatus.setAttribute("currentS", "r")
     }
     myBookStatus.addEventListener("click", () => {
         let c = myBookStatus.getAttribute("currentS");
         if (c == 'g') {
             myBook.style.backgroundColor = 'rgb(235,93,120)';
-            myBookStatus.setAttribute("currentS" , "r");
-        } else if (c =='r') {
+            myBookStatus.setAttribute("currentS", "r");
+        } else if (c == 'r') {
             myBook.style.backgroundColor = 'rgb(94,235,138)';
-            myBookStatus.setAttribute("currentS" , "g")
+            myBookStatus.setAttribute("currentS", "g")
         }
         toggleStatus(element);
     });
@@ -133,13 +110,40 @@ function showMe(element) {
     display.appendChild(myBook);
 }
 
+
+const addingToLibrary = function() {
+    if ((title.value != '' && author.value != '' && pages.value != '') && (statusRead.checked || statusToRead.checked)) {
+        if (statusRead.checked) {
+            var read = true;
+        } else if (statusToRead.checked) {
+            read = false;
+        }
+        //purify input
+        let t;
+        t = encodeURIComponent(title.value);
+        if(t.length >40){
+            t = t.slice(0,40);
+        }
+        let a;
+        a = encodeURIComponent(author.value);
+        if(a.length >20){
+            a = a.slice(0,20);
+        }
+        let newB = new Book(t, a, pages.value, read);
+        library.push(newB)
+        showMe(newB)
+        movingIntoStorage()
+    }
+}
+
+
 //this is to remove the  book from the library array
-function cleanLibrary(ele) {
+const cleanLibrary = function(ele) {
     let index = library.indexOf(ele)
     library.splice(index, 1)
 }
 
-function toggleStatus(element) {
+const toggleStatus = function(element) {
     if (element.read == true) {
         element.read = false
     } else if (element.read == false) {
@@ -148,7 +152,19 @@ function toggleStatus(element) {
 }
 
 //this is the function that moves library into localStorage
-function movingIntoStorage() {
+const movingIntoStorage = function() {
     let l = JSON.stringify(library);
     window.localStorage.setItem("localLibrary", l)
 };
+
+//this will display the local Library
+const displayLocalLibrary = (function() {
+    if (library.length > 0) {
+        for (let i = 0; i < library.length; i++) {
+            showMe(library[i])
+        }
+    }
+})()
+
+//this button will actually add the books on the shelf
+adding.addEventListener('click', addingToLibrary);
