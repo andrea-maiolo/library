@@ -50,21 +50,6 @@ const showMe = function(element) {
     myBookPages.classList.add('pOfBook');
 
 
-    let buttonDiv = document.createElement('div');
-    buttonDiv.classList.add('buttonDiv');
-
-    let myBookInfo = document.createElement('button');
-    let iconI = document.createElement("i");
-    iconI.classList.add('glyphicon');
-    iconI.classList.add('glyphicon-info-sign');
-    myBookInfo.appendChild(iconI);
-    myBookInfo.classList.add('infoButton')
-    myBookInfo.addEventListener('click', () => {
-        let a;
-        element.read == true ? a = "already read" : a = "not read yet";
-        alert(`${element.title} by ${element.author}, ${element.pages} in total, status ${a}`)
-    });
-
     let readOrNot = element.read;
     let myBookStatus = document.createElement('button');
     myBookStatus.classList.add('statusButton');
@@ -91,9 +76,6 @@ const showMe = function(element) {
         toggleStatus(element);
     });
 
-    buttonDiv.appendChild(myBookStatus);
-    buttonDiv.appendChild(myBookInfo);
-
     let removeButton = document.createElement('button');
     let trashI = document.createElement("i");
     trashI.classList.add('glyphicon');
@@ -108,7 +90,7 @@ const showMe = function(element) {
     myBook.appendChild(myBookTitle);
     myBook.appendChild(myBookAuthor);
     myBook.appendChild(myBookPages);
-    myBook.appendChild(buttonDiv)
+    myBook.appendChild(myBookStatus)
     display.appendChild(myBook);
 }
 
@@ -171,3 +153,18 @@ const displayLocalLibrary = (function() {
 
 //this button will actually add the books on the shelf
 adding.addEventListener('click', addingToLibrary);
+
+//here this function display the library info
+const libInfo = function(){
+        let unreadCount = 0;
+        let readCount=0;
+        library.forEach(e =>{
+            e.read == true ? readCount++ : unreadCount++;
+        })
+        let tb = library.length;
+        let message = `The total books are ${tb}, of those there are ${readCount} read books and ${unreadCount} unread books`;
+        alert(message);
+}
+
+const infoButton= document.querySelector('.infoButton');
+infoButton.addEventListener('click', libInfo);

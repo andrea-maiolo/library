@@ -71,10 +71,6 @@
         display: none;
     }
 
-    .small-text {
-        display: none;
-    }
-
     .books {
         display: flex;
         flex-direction: column;
@@ -97,13 +93,9 @@
         width: 35px;
         height: 30px;
         background-color: #eac93b;
+        align-self: flex-end;
     }
 
-    .infoButton {
-        width: 35px;
-        height: 30px;
-        background-color: #eac93b;
-    }
 
 }
 
@@ -213,12 +205,7 @@
         width: 35px;
         height: 30px;
         background-color: #eac93b;
-    }
-
-    .infoButton {
-        width: 35px;
-        height: 30px;
-        background-color:#eac93b;
+        align-self: flex-end;
     }
 
     .sign {
@@ -227,13 +214,25 @@
         font-size: .7em;
     }
 
-    .small-text {
-        display: block;
-        margin-left: 1.2em;
-        color: #eac93b;
+    .infoButton {
+        border: none;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        outline: transparent;
+        background: linear-gradient(135deg, #2196f3 0%, #33648e 100%);
+        color: #fff;
+        box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
     }
 
-    a {
-        color: black;
+    .infoButton:hover {
+        cursor:pointer;
+        transition: transform 0.25s;
+        transform: rotate(360deg) scale(1.2);
     }
+
 }
