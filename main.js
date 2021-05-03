@@ -30,7 +30,7 @@ const isThereALibrary = (function() {
     let provisionalLib = JSON.parse(localStorage.getItem("localLibrary"));
     if (provisionalLib.length > 0) {
         library = provisionalLib
-    }
+    }else{return}
 })();
 
 //show me the library
@@ -140,7 +140,8 @@ const addingToLibrary = function() {
 //this is to remove the  book from the library array
 const cleanLibrary = function(ele) {
     let index = library.indexOf(ele)
-    library.splice(index, 1)
+    library.splice(index, 1);
+    movingIntoStorage()
 }
 
 const toggleStatus = function(element) {
@@ -149,6 +150,7 @@ const toggleStatus = function(element) {
     } else if (element.read == false) {
         element.read = true
     }
+    movingIntoStorage()
 }
 
 //this is the function that moves library into localStorage
