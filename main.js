@@ -28,9 +28,11 @@ let library = [];
 //this will check at the beginning of the file for a localLibrary
 const isThereALibrary = (function() {
     let provisionalLib = JSON.parse(localStorage.getItem("localLibrary"));
-    if (provisionalLib.length > 0) {
+    if(provisionalLib == null || provisionalLib.length == 0){
+        return
+    }else if (provisionalLib.length > 0) {
         library = provisionalLib
-    }else{return}
+    }else {console.log(provisionalLib)}
 })();
 
 //show me the library
@@ -118,7 +120,6 @@ const addingToLibrary = function() {
         } else if (statusToRead.checked) {
             read = false;
         }
-        //purify input
         let t;
         t = encodeURIComponent(title.value);
         if(t.length >40){
